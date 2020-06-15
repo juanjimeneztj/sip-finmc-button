@@ -73,6 +73,21 @@ class sip_finmc_button extends Widget_Base {
 		);
         
         $this->add_control(
+			'max-width',
+			[
+				'label' => __( 'Max-width', 'sip-finmc-button' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 100,
+				'max' => 1600,
+				'step' => 1,
+				'default' => 850,
+                'selectors' =>[
+                    '{{WRAPPER}} .juanjimeneztj-finmc-btn' => 'max-width: {{VALUE}}px;',
+                ],
+			]
+		);
+        
+        $this->add_control(
 			'font_family',
 			[
 				'label' => __( 'Font Family', 'sip-finmc-button' ),
@@ -81,7 +96,7 @@ class sip_finmc_button extends Widget_Base {
 			]
 		);
         
-        $this->add_control(
+        $this->add_responsive_control(
 			'fsize',
 			[
 				'label' => __( 'Font-size', 'sip-finmc-button' ),
@@ -93,6 +108,8 @@ class sip_finmc_button extends Widget_Base {
                 'selectors' =>[
                     '{{WRAPPER}} .juanjimeneztj-finmc-btn-title' => 'font-size: {{VALUE}}px;',
                 ],
+                'devices' => [ 'desktop', 'tablet', 'mobile' ],
+				'prefix_class' => 'juanjimeneztj-fsize-%s',
 			]
 		);
         
