@@ -286,7 +286,7 @@ class sip_finmc_button extends Widget_Base {
         $this->start_controls_section(
 			'section_style_padding',
 			[
-				'label' => __( 'Padding Styles', 'sip-finmc-button' ),
+				'label' => __( 'Margins Styles', 'sip-finmc-button' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -295,10 +295,25 @@ class sip_finmc_button extends Widget_Base {
 			'padding',
 			[
 				'label' => __( 'Padding', 'sip-finmc-button' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => '15px 15px 15px 15px',
-                'selectors' =>[
-                    '{{WRAPPER}} .juanjimeneztj-finmc-btn' => 'padding: {{VALUE}};',
+                'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+                'default' => ['top' => '15', 'right'=>'15', 'bottom'=> '15', 'left'=> '15','unit' => 'px'],
+				'selectors' => [
+					'{{WRAPPER}} .juanjimeneztj-finmc-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
+			]
+		);
+        
+        $this->add_control(
+			'margin',
+			[
+				'label' => __( 'Margin', 'sip-finmc-button' ),
+                'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+                'allowed_dimensions' => ['top', 'bottom'],
+                'default' => [ 'top' => '0', 'right'=>'auto', 'bottom'=> '0', 'left'=> 'auto'],
+				'selectors' => [
+					'{{WRAPPER}} .juanjimeneztj-finmc-btn' => 'margin: {{TOP}}{{UNIT}} auto {{BOTTOM}}{{UNIT}} auto;',
                 ]
 			]
 		);
